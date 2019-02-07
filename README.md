@@ -8,11 +8,11 @@
 
 ## Target design
 
-![Design 1](https://cdn.rawgit.com/neopoly/tic_tac_toe-unity/master/doc/design-1.png?v=2)
+![Design 1](https://cdn.jsdelivr.net/gh/neopoly/tic_tac_toe-unity@master/doc/design-1.png)
 
-![Design 2](https://cdn.rawgit.com/neopoly/tic_tac_toe-unity/master/doc/design-2.png?v=2)
+![Design 2](https://cdn.jsdelivr.net/gh/neopoly/tic_tac_toe-unity@master/doc/design-2.png)
 
-![Design 3](https://cdn.rawgit.com/neopoly/tic_tac_toe-unity/master/doc/design-3.png?v=2)
+![Design 3](https://cdn.jsdelivr.net/gh/neopoly/tic_tac_toe-unity@master/doc/design-3.png)
 
 ## Environment
 
