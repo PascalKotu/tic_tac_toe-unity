@@ -35,7 +35,7 @@
 
 * A Unity Test Runner is already setup
 * Open the runner's window via "Window > General > Test Runner"
-* Select "EditMode" (should already be seelcted) and press "Run All"
+* Select "EditMode" (should already be selected) and press "Run All"
 
 ### Build
 
