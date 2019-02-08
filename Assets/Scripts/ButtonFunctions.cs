@@ -49,6 +49,10 @@ public class ButtonFunctions : MonoBehaviour
 		for(int i = 0; i < 9; i++)
 			buttons[i].SetActive(true);
 
+		//reset the next player
+		gBCross.SetActive(true);
+		gBCircle.SetActive(false);
+
 		//and finally reset the Tic tac toe logic
 		ttt.reset();
 	}
@@ -56,8 +60,14 @@ public class ButtonFunctions : MonoBehaviour
 	//code for pressing the buttons on the gameboard
 	public void gameButton (int number){
 		if(!ttt.isWon()){
-			//gBCross.SetActive(!gBCross.activeSelf);
+			//places the correct sign onto the gameboard 
 			placeSign(number);
+
+			//show player for next turn
+			gBCross.SetActive(!gBCross.activeSelf);
+			gBCircle.SetActive(!gBCircle.activeSelf);
+
+			//activate Tic tac toe logic
 			ttt.setArray(number);
 			if (ttt.isWon()){
 				showWinScreen();
