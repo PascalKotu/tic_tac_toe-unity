@@ -78,6 +78,14 @@ public class TicTacToe
 			return true;
 		}
 
-		return false;
+		//if gameboard is not full
+		for(int i = 0; i < 9; i++){
+			if (gameboard[i] == 'N'){
+				return false;
+			}
+		}
+		//if gameboard is full and not winner was found
+		player = 'N';
+		return true;
 	}
 }
