@@ -13,9 +13,15 @@ public class ButtonFunctions : MonoBehaviour
 	[SerializeField]
 	private GameObject circle;
 
-	//for showing gameboard and winningscreen
+	//for showing gameboard 
 	[SerializeField]
 	private GameObject gameboard;
+	[SerializeField]
+	private GameObject gBCross;
+	[SerializeField]
+	private GameObject gBCircle;
+
+	//for showing winningscreen
 	[SerializeField]
 	private GameObject winningScreen;
 	[SerializeField]
@@ -28,6 +34,11 @@ public class ButtonFunctions : MonoBehaviour
 
 	//code for starting a new game
 	public void newGameButton(){
+		//if player decides to restart half way trough
+		GameObject[] signs = GameObject.FindGameObjectsWithTag("Player");
+		foreach(GameObject sign in signs)
+			Destroy(sign);
+
 		//toggle winscreen and show gameboard
 		gameboard.SetActive(true);
 		winningScreen.SetActive(false);
@@ -45,6 +56,7 @@ public class ButtonFunctions : MonoBehaviour
 	//code for pressing the buttons on the gameboard
 	public void gameButton (int number){
 		if(!ttt.isWon()){
+			//gBCross.SetActive(!gBCross.activeSelf);
 			placeSign(number);
 			ttt.setArray(number);
 			if (ttt.isWon()){
