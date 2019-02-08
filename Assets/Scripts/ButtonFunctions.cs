@@ -6,6 +6,11 @@ public class ButtonFunctions : MonoBehaviour
 {
 	[SerializeField]
 	private GameObject[] buttons;
+	[SerializeField]
+	private GameObject cross;
+	[SerializeField]
+	private GameObject circle;
+
 
 	private TicTacToe ttt= new TicTacToe();
 
@@ -17,7 +22,19 @@ public class ButtonFunctions : MonoBehaviour
 	//code for pressing the buttons on the gameboard
 	public void gameButton (int number){
 		Debug.Log("Button "+ number+ " is pressed");
-		buttons[number].SetActive(false);
+		placeSign(number);
 		ttt.setArray(number);
 	}
+	private void placeSign (int number){
+		char player = ttt.getPlayer();
+		if(player == 'X'){
+			GameObject go = Instantiate(cross, buttons[number].transform.position, Quaternion.identity);
+			go.transform.SetParent(this.transform);
+		} else {
+			GameObject go = Instantiate(circle, buttons[number].transform.position, Quaternion.identity);
+			go.transform.SetParent(this.transform);
+		}
+		buttons[number].SetActive(false);
+	}
+
 }

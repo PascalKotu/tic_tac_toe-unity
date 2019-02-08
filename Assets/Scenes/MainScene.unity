@@ -1694,6 +1694,8 @@ MonoBehaviour:
   - {fileID: 450173437}
   - {fileID: 599325337}
   - {fileID: 220997893}
+  cross: {fileID: 198244458342194909, guid: df4a46542e05b1645814ce5a10a0da0f, type: 3}
+  circle: {fileID: 3166182212683976155, guid: 5650d86672b332445ac3804e6bfaf17b, type: 3}
 --- !u!1 &1535122946
 GameObject:
   m_ObjectHideFlags: 0
