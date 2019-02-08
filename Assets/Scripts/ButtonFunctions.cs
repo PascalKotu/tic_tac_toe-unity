@@ -21,9 +21,13 @@ public class ButtonFunctions : MonoBehaviour
 
 	//code for pressing the buttons on the gameboard
 	public void gameButton (int number){
-		Debug.Log("Button "+ number+ " is pressed");
-		placeSign(number);
-		ttt.setArray(number);
+		if(!ttt.isWon()){
+			placeSign(number);
+			ttt.setArray(number);
+			if (ttt.isWon()){
+				Debug.Log(ttt.getPlayer() +" wins");
+			}
+		}
 	}
 	private void placeSign (int number){
 		char player = ttt.getPlayer();
