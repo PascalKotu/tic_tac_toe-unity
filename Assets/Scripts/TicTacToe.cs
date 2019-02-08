@@ -30,7 +30,7 @@ public class TicTacToe
 	private void playerSwitch(){
 		if(player == 'X')
 			player = 'O';
-		else
+		else if(player == 'O')
 			player = 'X';
 	}
 
@@ -87,5 +87,12 @@ public class TicTacToe
 		//if gameboard is full and not winner was found
 		player = 'N';
 		return true;
+	}
+
+	public void reset(){
+		for(int i = 0; i < 9; i++)
+			gameboard[i] = 'N';
+		player = 'X';
+		win = false;
 	}
 }

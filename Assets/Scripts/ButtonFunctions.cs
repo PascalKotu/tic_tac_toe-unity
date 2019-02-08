@@ -16,7 +16,12 @@ public class ButtonFunctions : MonoBehaviour
 
 	//code for starting a new game
 	public void newGameButton(){
-		Debug.Log("Starting new game... ");
+		GameObject[] signs = GameObject.FindGameObjectsWithTag("Player");
+		foreach(GameObject sign in signs)
+			Destroy(sign);
+		for(int i = 0; i < 9; i++)
+			buttons[i].SetActive(true);
+		ttt.reset();
 	}
 
 	//code for pressing the buttons on the gameboard
