@@ -110,4 +110,9 @@ public class ButtonFunctions : MonoBehaviour
 		buttons[number].SetActive(false);
 	}
 
+
+	public void quit(){
+		Application.Quit();
+	}
+
 }
