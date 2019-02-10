@@ -2619,6 +2619,7 @@ MonoBehaviour:
   winningScreen: {fileID: 2015024035}
   wSCross: {fileID: 1925012150}
   wSCircle: {fileID: 499364579}
+  winline: {fileID: 209713507523474519, guid: 45a1199c4df0d3d49b5f24913ca41374, type: 3}
 --- !u!82 &1389815225
 AudioSource:
   m_ObjectHideFlags: 0

@@ -5,29 +5,31 @@ using UnityEngine;
 public class ButtonFunctions : MonoBehaviour
 {
 	[SerializeField]
-	private GameObject[] buttons;
+	private GameObject[] buttons = default;
 
 	//prefabs for gameboard
 	[SerializeField]
-	private GameObject cross;
+	private GameObject cross = default;
 	[SerializeField]
-	private GameObject circle;
+	private GameObject circle = default;
 
 	//for showing gameboard 
 	[SerializeField]
-	private GameObject gameboard;
+	private GameObject gameboard = default;
 	[SerializeField]
-	private GameObject gBCross;
+	private GameObject gBCross = default;
 	[SerializeField]
-	private GameObject gBCircle;
+	private GameObject gBCircle = default;
 
 	//for showing winningscreen
 	[SerializeField]
-	private GameObject winningScreen;
+	private GameObject winningScreen = default;
 	[SerializeField]
-	private GameObject wSCross;
+	private GameObject wSCross = default;
 	[SerializeField]
-	private GameObject wSCircle;
+	private GameObject wSCircle = default;
+	[SerializeField]
+	private GameObject winline = default;
 
 	//for all actions that need Tic Tac Toe logic
 	private TicTacToe ttt= new TicTacToe();
@@ -70,18 +72,69 @@ public class ButtonFunctions : MonoBehaviour
 			//activate Tic tac toe logic
 			ttt.setArray(number);
 			if (ttt.isWon()){
-				showWinScreen();
+				showWinLine();
 			}
 		}
 	}
 
-	private void showWinScreen(){
-		//first destroy signs on the gameboard
-		GameObject[] signs = GameObject.FindGameObjectsWithTag("Player");
-		foreach(GameObject sign in signs)
-			Destroy(sign);
+	//shows a line to indicate what line brought victory to one of the players
+	private void showWinLine(){
+		//row1
+		if(ttt.getWinPosition() == 0){
+			GameObject go = Instantiate(winline, buttons[1].transform.position, Quaternion.identity);
+			go.transform.SetParent(this.transform);
+		}
+		//row2
+		if(ttt.getWinPosition() == 1){
+			GameObject go = Instantiate(winline, buttons[4].transform.position, Quaternion.identity);
+			go.transform.SetParent(this.transform);
+		}
+		//row3
+		if(ttt.getWinPosition() == 2){
+			GameObject go = Instantiate(winline, buttons[7].transform.position, Quaternion.identity);
+			go.transform.SetParent(this.transform);
+		}
 
-		//then deactivate the gameboard 
+		//column1
+		if(ttt.getWinPosition() == 3){
+			GameObject go = Instantiate(winline, buttons[3].transform.position, Quaternion.AngleAxis(-90, Vector3.forward));
+			go.transform.SetParent(this.transform);
+		}
+		//column2
+		if(ttt.getWinPosition() == 4){
+			GameObject go = Instantiate(winline, buttons[4].transform.position, Quaternion.AngleAxis(-90, Vector3.forward));
+			go.transform.SetParent(this.transform);
+		}
+		//column3
+		if(ttt.getWinPosition() == 5){
+			GameObject go = Instantiate(winline, buttons[5].transform.position, Quaternion.AngleAxis(-90, Vector3.forward));
+			go.transform.SetParent(this.transform);
+		}
+
+		//diagonal1
+		if(ttt.getWinPosition() == 6){
+			GameObject go = Instantiate(winline, buttons[4].transform.position, Quaternion.AngleAxis(-45, Vector3.forward));
+			go.transform.SetParent(this.transform);
+		}
+		//diagonal2
+		if(ttt.getWinPosition() == 7){
+			GameObject go = Instantiate(winline, buttons[4].transform.position, Quaternion.AngleAxis(45, Vector3.forward));
+			go.transform.SetParent(this.transform);
+		}
+		//none
+		if(ttt.getWinPosition() == 8){
+			showWinScreen();
+		}
+
+	}
+	//is called when the animation of the winline is finished
+	public void resume(){
+		showWinScreen();
+	}
+
+
+	private void showWinScreen(){
+		//first deactivate the gameboard 
 		gameboard.SetActive(false);
 		//and activate the winingScreen with the player who won
 		winningScreen.SetActive(true);
@@ -93,6 +146,10 @@ public class ButtonFunctions : MonoBehaviour
 			wSCross.SetActive(true);
 			wSCircle.SetActive(true);
 		}
+		//then destroy signs on the gameboard
+		GameObject[] signs = GameObject.FindGameObjectsWithTag("Player");
+		foreach(GameObject sign in signs)
+			Destroy(sign);
 	}
 
 	private void placeSign (int number){
